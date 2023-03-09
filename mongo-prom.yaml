@@ -24,7 +24,7 @@ persistence:
 args:
   - "--wiredTigerCacheSizeGB=0.5"
 metrics:
-## @param metrics.enabled Enable using a sidecar Prometheus exporter
+## @param metrics.enabled Enable using a sidecar Prometheus exporter 
 ##
   enabled: true
   prometheusRule:

@@ -1,0 +1,23 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  annotations:
+    meta.helm.sh/release-name: my-release
+    meta.helm.sh/release-namespace: default
+  labels:
+    app.kubernetes.io/component: prometheus
+    app.kubernetes.io/instance: my-release
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: kube-prometheus
+    helm.sh/chart: kube-prometheus-8.3.11
+  name: my-release-kube-prometheus-prometheusexample
+  namespace: default
+spec:
+  podMetricsEndpoints:
+    - port: metrics
+  namespaceSelector:
+    matchNames:
+    - gmp-newtest
+  selector:
+    matchLabels:
+      app: prom-example

@@ -1,0 +1,44 @@
+architecture: replicaset
+fullnameOverride: "mongodb-replicaset-chart"
+image:
+  registry: docker.io
+  repository: bitnami/mongodb
+  tag: 4.4.15
+replicaCount: 3
+arbiter:
+  enabled: true
+service:
+  nameOverride: "mongodb-replicaset-chart"
+auth:
+  rootUser: "admin"
+resources:
+  limits:
+    cpu: 2
+    memory: 2048Mi
+  requests:
+    cpu: 1
+    memory: 2048Mi
+persistence:
+  size: 20Gi
+args:
+  - "--wiredTigerCacheSizeGB=0.5"
+metrics:
+## @param metrics.enabled Enable using a sidecar Prometheus exporter
+##
+  enabled: true
+  serviceMonitor:
+    enabled: true
+    namespace: gmp-test
+    selector:
+        app.kubernetes.io/name: mongodb
+        helm.sh/chart: mongodb-13.1.2
+  prometheusRule:
+    enabled: false
+    rules:
+    - alert: HighRequestLatency
+      expr: job:request_latency_seconds:mean5m{job="myjob"} > 0.5
+      for: 10m
+      labels:
+        severity: page
+      annotations:
+        summary: High request latency

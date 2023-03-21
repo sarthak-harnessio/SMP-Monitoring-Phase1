@@ -1,0 +1,25 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  annotations:
+    meta.helm.sh/release-name: my-release
+    meta.helm.sh/release-namespace: default
+  labels:
+    app.kubernetes.io/component: prometheus
+    app.kubernetes.io/instance: my-release
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: kube-prometheus
+    helm.sh/chart: kube-prometheus-8.3.11
+  name: timescaledb-replicaset
+  namespace: gmp-test
+spec:
+  endpoints:
+    - port: metrics
+  namespaceSelector:
+    matchNames:
+    - times
+  selector:
+    matchLabels:
+      app: timescaledb-chart
+      app.kubernetes.io/component: postgres-exporter
+      app.kubernetes.io/name: release-timescaledb

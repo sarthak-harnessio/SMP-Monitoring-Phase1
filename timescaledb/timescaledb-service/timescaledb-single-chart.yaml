@@ -1,0 +1,2 @@
+NAME                       TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)    AGE
+timescaledb-single-chart   ClusterIP   10.108.17.100   <none>        5432/TCP   4d3h

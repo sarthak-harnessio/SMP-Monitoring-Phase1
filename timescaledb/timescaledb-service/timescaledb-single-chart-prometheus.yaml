@@ -1,0 +1,2 @@
+NAME                                  TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)    AGE
+timescaledb-single-chart-prometheus   ClusterIP   10.108.17.74   <none>        9187/TCP   4d3h

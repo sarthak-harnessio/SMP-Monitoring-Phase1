@@ -1,0 +1,25 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  annotations:
+    meta.helm.sh/release-name: my-release
+    meta.helm.sh/release-namespace: gmp-test
+  labels:
+    app.kubernetes.io/component: prometheus
+    app.kubernetes.io/instance: my-release
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: kube-prometheus
+    helm.sh/chart: kube-prometheus-8.3.12
+  name: my-release-kube-prometheus-prometheus
+  namespace: gmp-test
+  resourceVersion: "24005489"
+  uid: 5745159d-37a4-4e08-9581-d562f933ea10
+spec:
+  podMetricsEndpoints: 
+  - port: metrics
+  namespaceSelector:
+    matchNames:
+    - gmp-test
+  selector:
+    matchLabels:
+      app: prom-example

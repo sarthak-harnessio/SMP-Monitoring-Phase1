@@ -15,5 +15,4 @@ spec:
     - redis
   selector:
     matchLabels:
-      apptwo: redis
       app: prometheus-redis-exporter

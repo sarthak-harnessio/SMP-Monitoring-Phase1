@@ -1,0 +1,1 @@
+ServiceMonitor deployed in the namespcae where prometheus operator is present. 

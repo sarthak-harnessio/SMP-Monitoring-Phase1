@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    cloud.google.com/neg: '{"ingress":true}'
+    meta.helm.sh/release-name: release
+    meta.helm.sh/release-namespace: times
+  creationTimestamp: "2023-03-17T04:32:24Z"
+  labels:
+    app: timescaledb-single-chart
+    app.kubernetes.io/component: timescaledb
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: release-timescaledb
+    app.kubernetes.io/version: 0.2.17
+    chart: timescaledb-0.2.17
+    cluster-name: timescaledb-single-chart
+    heritage: Helm
+    release: release
+    role: master
+  name: timescaledb-single-chart
+  namespace: times
+  resourceVersion: "25745963"
+  uid: b220cd87-2e41-49e2-b89a-736affe7f33a
+spec:
+  clusterIP: 10.108.17.100
+  clusterIPs:
+  - 10.108.17.100
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: postgresql
+    port: 5432
+    protocol: TCP
+    targetPort: postgresql
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}

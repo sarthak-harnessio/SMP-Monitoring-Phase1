@@ -1,2 +1,0 @@
-timescaledb servicemonitor that we have applied in gmp-test namespace. 
-Note that timescale is deployed in the times namespace. 

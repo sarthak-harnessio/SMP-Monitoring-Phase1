@@ -1,0 +1,33 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"monitoring.coreos.com/v1","kind":"ServiceMonitor","metadata":{"annotations":{"meta.helm.sh/release-name":"my-release","meta.helm.sh/release-namespace":"default"},"labels":{"app.kubernetes.io/component":"prometheus","app.kubernetes.io/instance":"my-release","app.kubernetes.io/managed-by":"Helm","app.kubernetes.io/name":"kube-prometheus","helm.sh/chart":"kube-prometheus-8.3.11"},"name":"timescaledb-replicaset","namespace":"gmp-test"},"spec":{"endpoints":[{"port":"metrics"}],"namespaceSelector":{"matchNames":["times"]},"selector":{"matchLabels":{"app":"timescaledb-chart","app.kubernetes.io/component":"postgres-exporter","app.kubernetes.io/name":"release-timescaledb"}}}}
+    meta.helm.sh/release-name: my-release
+    meta.helm.sh/release-namespace: default
+  creationTimestamp: "2023-03-17T06:02:19Z"
+  generation: 5
+  labels:
+    app.kubernetes.io/component: prometheus
+    app.kubernetes.io/instance: my-release
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: kube-prometheus
+    helm.sh/chart: kube-prometheus-8.3.11
+  name: timescaledb-replicaset
+  namespace: gmp-test
+  resourceVersion: "25843248"
+  uid: f683680c-e3bf-46ad-b51d-af07cc47727a
+spec:
+  endpoints:
+  - interval: 30s
+    path: /metrics
+    port: metrics
+  namespaceSelector:
+    matchNames:
+    - times
+  selector:
+    matchLabels:
+      app: timescaledb-single-chart
+      app.kubernetes.io/component: postgres-exporter
+      app.kubernetes.io/name: release-timescaledb

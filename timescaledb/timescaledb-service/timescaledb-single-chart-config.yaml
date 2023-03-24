@@ -1,2 +1,0 @@
-NAME                              TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)    AGE
-timescaledb-single-chart-config   ClusterIP   None         <none>        8008/TCP   4d3h

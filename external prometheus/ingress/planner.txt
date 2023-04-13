@@ -1,0 +1,13 @@
+1. Create a nginx service to listen on different port than 80 which uses externalTrafficPolicy:Local // ask jon
+2. Create ingress rules with whitelisting information
+3. If Prometheus Operator powered prometheus:
+    1. Add scrape config in prometheus namespace under a secret
+    2. Provide that secret name in Prometheus Resource
+```yaml
+spec:
+  additionalScrapeConfigs:
+    key: config.yml
+    name: mongo-test-secret
+```
+4. If standalone Prometheus
+    1. Directly add scrape config to prometheus config.yml and restart prometheus

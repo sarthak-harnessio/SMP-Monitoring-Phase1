@@ -30,7 +30,7 @@ metadata:
   name: postgres-metrics
   namespace: gcloud
   annotations:
-    nginx.ingress.kubernetes.io/whitelist-source-range: "10.116.1.26"
+    nginx.ingress.kubernetes.io/whitelist-source-range: 34.170.35.199
     nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
   ingressClassName: "harness"

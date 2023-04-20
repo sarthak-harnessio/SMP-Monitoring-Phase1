@@ -1,0 +1,62 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mongo-metrics
+  namespace: gcloud
+  uid: df5e992b-5a49-48fb-9b85-f76176d0a188
+  resourceVersion: '77175193'
+  generation: 2
+  creationTimestamp: '2023-04-10T05:30:00Z'
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: >
+      {"apiVersion":"networking.k8s.io/v1","kind":"Ingress","metadata":{"annotations":{"nginx.ingress.kubernetes.io/rewrite-target":"/$2"},"name":"mongo-metrics","namespace":"gcloud"},"spec":{"ingressClassName":"harness","rules":[{"http":{"paths":[{"backend":{"service":{"name":"mongodb-replicaset-chart-metrics","port":{"number":9216}}},"path":"/mongo-metrics","pathType":"ImplementationSpecific"}]}}]}}
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+  managedFields:
+    - manager: kubectl-client-side-apply
+      operation: Update
+      apiVersion: networking.k8s.io/v1
+      time: '2023-04-10T05:30:00Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:kubectl.kubernetes.io/last-applied-configuration: {}
+            f:nginx.ingress.kubernetes.io/rewrite-target: {}
+        f:spec:
+          f:ingressClassName: {}
+    - manager: node-fetch
+      operation: Update
+      apiVersion: networking.k8s.io/v1
+      time: '2023-04-10T05:45:32Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:spec:
+          f:rules: {}
+    - manager: nginx-ingress-controller
+      operation: Update
+      apiVersion: networking.k8s.io/v1
+      time: '2023-04-11T14:17:25Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:status:
+          f:loadBalancer:
+            f:ingress: {}
+      subresource: status
+  selfLink: /apis/networking.k8s.io/v1/namespaces/gcloud/ingresses/mongo-metrics
+status:
+  loadBalancer:
+    ingress:
+      - ip: 34.171.103.160
+spec:
+  ingressClassName: harness
+  rules:
+    - http:
+        paths:
+          - path: /mongo-metrics(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: mongodb-replicaset-chart-metrics
+                port:
+                  number: 9216
